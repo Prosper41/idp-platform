@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsUrl, IsIn } from 'class-validator';
+import { IsString, IsOptional, IsUrl, IsIn, IsArray } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateServiceDto {
@@ -15,6 +15,11 @@ export class CreateServiceDto {
   @IsString()
   owner: string;
 
+  @ApiPropertyOptional({ example: 'platform-team' })
+  @IsOptional()
+  @IsString()
+  team?: string;
+
   @ApiPropertyOptional({ example: 'https://github.com/org/auth-service' })
   @IsOptional()
   @IsUrl()
@@ -24,4 +29,19 @@ export class CreateServiceDto {
   @IsOptional()
   @IsIn(['active', 'deprecated', 'archived'])
   status?: string;
+
+  @ApiPropertyOptional({ example: ['TypeScript', 'SQL'], type: [String] })
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  language?: string[];
+
+  @ApiPropertyOptional({
+    example: ['backend', 'auth', 'critical'],
+    type: [String],
+  })
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  tags?: string[];
 }
