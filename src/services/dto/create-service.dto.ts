@@ -36,7 +36,10 @@ export class CreateServiceDto {
   @IsString({ each: true })
   language?: string[];
 
-  @ApiPropertyOptional({ example: ['backend', 'auth', 'critical'], type: [String] })
+  @ApiPropertyOptional({
+    example: ['backend', 'auth', 'critical'],
+    type: [String],
+  })
   @IsOptional()
   @IsArray()
   @IsString({ each: true })
