@@ -1,98 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# IDP Platform
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+An Internal Developer Platform (IDP) built with NestJS. The goal is to give engineers a single, consistent place to manage services, provision infrastructure, and follow golden-path conventions instead of piecing tools together manually.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is in early development. The base application is running with foundational building blocks in place, and platform-specific features are being built out incrementally.
 
-## Description
+## What is this?
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+An Internal Developer Platform reduces the operational overhead engineers deal with day to day — things like standing up a new service, tracking who owns what, checking service health, or provisioning cloud resources. Instead of every team solving these problems separately, the platform provides shared, self-service tooling.
 
-## Project setup
+This repo is the core API for that platform.
 
-```bash
-$ npm install
-```
+## Current status
 
-## Compile and run the project
+**Working:**
+- NestJS application scaffold, running in watch mode for local development
+- Environment-based configuration via `@nestjs/config`
+- Health check endpoint (`GET /health`) via `@nestjs/terminus`
 
-```bash
-# development
-$ npm run start
+**Not yet built:**
+- Database integration
+- Authentication
+- CI/CD pipeline
+- Core platform features (service catalog, scaffolding templates, or infrastructure orchestration — direction still being finalized)
 
-# watch mode
-$ npm run start:dev
+## Tech stack
 
-# production mode
-$ npm run start:prod
-```
+- [NestJS](https://nestjs.com/) — application framework
+- TypeScript
+- `@nestjs/config` — environment configuration
+- `@nestjs/terminus` — health checks
 
-## Run tests
+## Getting started
+
+### Prerequisites
+
+- Node.js (v18 or later recommended)
+- npm
+
+### Installation
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/Prosper41/idp-platform.git
+cd idp-platform
+npm install
 ```
 
-## Deployment
+### Environment setup
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Create a `.env` file in the project root:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+```
+NODE_ENV=development
+PORT=3000
+```
+
+### Running the app
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# development (watch mode)
+npm run start:dev
+
+# production
+npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+The app runs on `http://localhost:3000` by default (or whatever `PORT` is set to).
 
-## Resources
+### Health check
 
-Check out a few resources that may come in handy when working with NestJS:
+Once running, verify the app is healthy:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```
+GET http://localhost:3000/health
+```
 
-## Support
+Expected response:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```json
+{ "status": "ok", "info": {}, "error": {}, "details": {} }
+```
 
-## Stay in touch
+## Roadmap
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+The platform's direction is still being scoped, with the following areas under consideration:
+
+1. **Service catalog** — track services, ownership, and metadata across the org
+2. **Scaffolding engine** — generate new projects from standardized templates
+3. **Infrastructure orchestration** — provision cloud resources through the platform instead of directly through cloud consoles
+
+## Contributing
+
+This project is under active early-stage development. Contribution guidelines will be added as the platform's direction solidifies.
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Not yet decided.
