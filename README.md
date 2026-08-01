@@ -6,9 +6,9 @@ This is the backend API. The frontend that consumes it lives in a separate repo:
 
 ## What is this?
 
-An Internal Developer Platform reduces the operational overhead engineers deal with day to day — things like standing up a new service, tracking who owns what, checking service health, or provisioning cloud resources. Instead of every team solving these problems separately, the platform provides shared, self-service tooling.
+An Internal Developer Platform reduces the operational overhead engineers deal with day to day things like standing up a new service, tracking who owns what, checking service health, or provisioning cloud resources. Instead of every team solving these problems separately, the platform provides shared, self-service tooling.
 
-This repo is the core API for that platform. The chosen starting point is a **service catalog** — a central place to register services and their metadata, which the platform's other features (scaffolding, infrastructure orchestration) will eventually build on top of.
+This repo is the core API for that platform. The chosen starting point is a **service catalog** a central place to register services and their metadata, which the platform's other features (scaffolding, infrastructure orchestration) will eventually build on top of.
 
 ## Current status
 
